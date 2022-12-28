@@ -8,20 +8,35 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    meta: {title: '你好'},
+    component: HomeView,
+    children: [
+      {
+        path: 'hello',
+        component: () => import('../components/HelloWorld.vue')
+      }
+    ]
   },
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+  },
+  {
+    path: '/guard',
+    name: 'guard',
+    component: () => import(/* webpackChunkName: "about" */ '../views/GuardView.vue')
+  },
+  // {
+  //   path: '*',
+  //   redirect: '/'
+  // }
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  // mode: 'history' // 路径中可以没有#号
+  mode: "hash" // 地址中默认带上一个#号
 })
 
 export default router
