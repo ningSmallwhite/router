@@ -1,12 +1,10 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/" replace>Home</router-link> |
-      <router-link to="/about" replace>About</router-link> |
-      <router-link :to="{ name: 'about' }" replace>About</router-link> |
-      <button @click="push">跳转到about</button> |
-      <button @click="params">获取参数</button> |
-      <button @click="open">新窗口打开</button> |
+      <router-link to="/" replace>replace属性</router-link> |
+      <router-link to="/about" replace>路由模式</router-link> |
+      <button @click="push">跳转到about传递参数</button> |
+      <button @click="open">新窗口打开about</button> |
       <router-link :to="{ 
         name: 'guard',
         query: {
@@ -27,9 +25,6 @@ export default {
       // this.$router.replace('/')
       this.$router.push({path:'about',query:{value:"queryONE"}})
     },
-    params() {
-      console.log(this.$route,"this.$route")
-    },
     open() {
       let routerData = this.$router.resolve({
         name:'about'
@@ -44,7 +39,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  // text-align: center;
   color: #2c3e50;
 }
 

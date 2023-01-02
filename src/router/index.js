@@ -8,8 +8,9 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    meta: {title: '你好'},
+    meta: {title: 'meta中的参数'},
     component: HomeView,
+    props: {pro:100},
     children: [
       {
         path: 'hello',
